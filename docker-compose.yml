@@ -16,27 +16,13 @@ services:
         image: offly:monopoly-scala
         container_name: monopoly-scala
         environment:
-            PROLOG_SERVER_URL: "http://localhost:8082"
             SERVER_PORT: "8081"
         volumes:
             - ./scala-server:/app
         ports:
-            - "8081:8081"
+            - ":8081"
         networks:
             - monopoly-network
-
-    # monopoly-prolog:
-    #     image: offly:monopoly-prolog
-    #     container_name: monopoly-prolog
-    #     volumes:
-    #       - ./prolog-bot:/app/prolog-bot
-    #     working_dir: /app/prolog-bot
-    #     ports:
-    #       - "8082:8082"
-    #     networks:
-    #       - monopoly-network
-    #     command: >
-    #       sh -c "swipl -g 'server(8082)' -t halt -- prolog_server.pl"
 
 networks:
     monopoly-network:
